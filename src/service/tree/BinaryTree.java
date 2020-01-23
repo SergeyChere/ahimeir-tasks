@@ -1,4 +1,4 @@
-package tree;
+package service.tree;
 
 public class BinaryTree {
     private Node root;
@@ -53,6 +53,10 @@ public class BinaryTree {
 
     public void print() {
         printRecursive(root);
+    }
+
+    public static void checkTheRank(BinaryTree tree, int i) {
+        tree.nodeRankTree(6);
     }
 
     private void printRecursive(Node root) {

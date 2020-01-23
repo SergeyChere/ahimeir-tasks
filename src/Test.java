@@ -1,5 +1,8 @@
-import stack.MyStackStructure;
-import tree.BinaryTree;
+import service.BalancedStringService;
+import service.ListCollideService;
+import service.TakeMinElementInStackService;
+import service.stack.MyStackStructure;
+import service.tree.BinaryTree;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,41 +10,52 @@ import java.util.Stack;
 
 public class Test {
     public static void main(String[] args) {
-        //you are given two lists find the first node at which they collide - 1
-        initListCollide();
+//        System.out.println(reverseString("hello how are you"));
 
-        //implement a stack data structure (only takes int and has a max size) - 2
-        initStackDataStructure();
+        //you are given two lists find the first node at which they collide - 1
+//        initListCollide();
+
+        //implement a service.stack data structure (only takes int and has a max size) - 2
+//        initStackDataStructure();
 
         //if you have a string that contains () {} [] .. check if it's balanced - 3
         initBalancedString();
 
-        //implement a stack with get_min o(1) you can use additional space - 4
-        initElementInStack();
+        //implement a service.stack with get_min o(1) you can use additional space - 4
+//        initElementInStack();
 
-        //given a binary search tree and a number a find the rank of a - 5
-        initCheckTheRank();
+        //given a binary search service.tree and a number a find the rank of a - 5
+//        initCheckTheRank();
+    }
+
+    private static String reverseString(String hello) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String[] arrMain = hello.split(" ");
+        if (arrMain.length == 0) {
+            return hello;
+        }
+        int counter = 0;
+        for (String str: arrMain) {
+            StringBuilder stringBuilder2 = new StringBuilder();
+            String[] arrTemp = str.split("");
+            for (int i = arrTemp.length-1; i >= 0; i--) {
+                stringBuilder2.append(arrTemp[i]);
+            }
+            counter++;
+            if (arrMain.length == counter) {
+                stringBuilder.append(stringBuilder2);
+            } else {
+                stringBuilder.append(stringBuilder2).append(" ");
+            }
+        }
+        return String.valueOf(stringBuilder);
     }
 
     //init 1
     private static void initListCollide() {
         List list1 = Arrays.asList(1,2,3,4,5,6,7,8,9);
         List list2 = Arrays.asList(8,12,13,14,15,16,7,8,19);
-        System.out.println(listCollide(list1, list2));
-    }
-
-    //1
-    private static int listCollide(List list1, List list2) {
-        int res = 0;
-        for (int i = 0; i < list1.size(); i++) {
-            for (int j = 0; j < list2.size(); j++) {
-                if (list1.get(i).equals(list2.get(j))) {
-                    res = (int) list1.get(i);
-                    return res;
-                }
-            }
-        }
-        return res;
+        System.out.println(ListCollideService.listCollide(list1, list2));
     }
 
     //init 2
@@ -66,25 +80,14 @@ public class Test {
     private static void initBalancedString() {
        String str1 = "(){}[]";
        String str2 = "(){}]]";
-       System.out.println(balancedString(str1));
-       System.out.println(balancedString(str2));
-    }
-
-    //3
-    private static boolean balancedString(String str) {
-        String strEx = "(){}[]";
-        String[] arrEx = strEx.split("");
-        String[] arr = str.split("");
-        int counter = 0;
-        for (int i = 0; i<strEx.length(); i++) {
-            if (arr[i].equals(arrEx[i])) {
-                counter++;
-            }
-        }
-        if (counter == arrEx.length) {
-            return true;
-        }
-        return false;
+       String str3 = "((({{{[[[]]]}}})))";
+       String str4 = "()(({}{{[[[]]]}}{}))()";
+       String str5 = "()(({}{{][[]]]}}{}))()";
+       System.out.println(BalancedStringService.balancedString(str1));
+       System.out.println(BalancedStringService.balancedString(str2));
+       System.out.println(BalancedStringService.balancedString(str3));
+       System.out.println(BalancedStringService.balancedString(str4));
+       System.out.println(BalancedStringService.balancedString(str5));
     }
 
     //init 4
@@ -98,23 +101,7 @@ public class Test {
         stack.push(8);
         stack.push(2);
         stack.push(4);;
-        System.out.println(minElementInStack(stack));
-    }
-
-    //4
-    private static int minElementInStack(Stack stack) {
-        Stack stack2 = new Stack();
-        int res = (int) stack.pop();
-        while (!stack.isEmpty()) {
-            if (res < (int) stack.peek()) {
-                stack2.push(stack.pop());
-            } else {
-                stack2.push(res);
-                res = (int) stack.pop();
-            }
-        }
-        stack2.push(res);
-        return (int) stack2.peek();
+        System.out.println(TakeMinElementInStackService.minElementInStack(stack));
     }
 
     //init 5
@@ -129,12 +116,6 @@ public class Test {
         tree.add(8);
         tree.add(4);
         tree.add(4);
-        checkTheRank(tree, 6);
-    }
-
-    //5
-    private static void checkTheRank(BinaryTree tree, int i) {
-        tree.nodeRankTree(6);
-//        tree.print();
+        BinaryTree.checkTheRank(tree, 6);
     }
 }

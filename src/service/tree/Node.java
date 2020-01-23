@@ -1,4 +1,4 @@
-package tree;
+package service.tree;
 
 public class Node {
     int node;
