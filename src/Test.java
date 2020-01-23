@@ -10,6 +10,7 @@ import java.util.Stack;
 
 public class Test {
     public static void main(String[] args) {
+        //Reverse String - Task from Codewars
 //        System.out.println(reverseString("hello how are you"));
 
         //you are given two lists find the first node at which they collide - 1
@@ -19,7 +20,7 @@ public class Test {
 //        initStackDataStructure();
 
         //if you have a string that contains () {} [] .. check if it's balanced - 3
-        initBalancedString();
+//        initBalancedString();
 
         //implement a service.stack with get_min o(1) you can use additional space - 4
 //        initElementInStack();
