@@ -1,3 +1,4 @@
+import service.BacktrackingWithReturn;
 import service.BalancedStringService;
 import service.ListCollideService;
 import service.TakeMinElementInStackService;
@@ -10,6 +11,11 @@ import java.util.Stack;
 
 public class Test {
     public static void main(String[] args) {
+        BacktrackingWithReturn.backtrack(4);
+
+        //Boolean array calculation - task from CodeWars
+//        System.out.println(numSheeps());
+
         //Reverse String - Task from Codewars
 //        System.out.println(reverseString("hello how are you"));
 
@@ -84,11 +90,34 @@ public class Test {
        String str3 = "((({{{[[[]]]}}})))";
        String str4 = "()(({}{{[[[]]]}}{}))()";
        String str5 = "()(({}{{][[]]]}}{}))()";
+       String str6 = "([)]";
        System.out.println(BalancedStringService.balancedString(str1));
        System.out.println(BalancedStringService.balancedString(str2));
        System.out.println(BalancedStringService.balancedString(str3));
        System.out.println(BalancedStringService.balancedString(str4));
        System.out.println(BalancedStringService.balancedString(str5));
+       System.out.println(BalancedStringService.balancedString(str6));
+    }
+
+    private static int numSheeps() {
+        Boolean[] arrayOfSheeps = {null,  true,  true,  false,
+                true,  true,  true,  true ,
+                true,  false, true,  false,
+                true,  false, false, null ,
+                null,  true,  true,  true ,
+                false, false, true,  true };
+        int counter = 0;
+        if(arrayOfSheeps == null) return 0;
+        for (int i = 0; i<arrayOfSheeps.length; i++) {
+            if (arrayOfSheeps[i]==null) {
+                i++;
+            } else {
+                if ((arrayOfSheeps[i].equals(true))) {
+                    counter++;
+                }
+            }
+        }
+        return counter;
     }
 
     //init 4

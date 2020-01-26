@@ -12,8 +12,8 @@ public interface BalancedStringService {
             return false;
         }
         if (arrEx[arrEx.length-1].equals("(") ||
-                   arrEx[arrEx.length-1].equals("[") ||
-                   arrEx[arrEx.length-1].equals("{")) {
+            arrEx[arrEx.length-1].equals("[") ||
+            arrEx[arrEx.length-1].equals("{")) {
             return false;
         }
         stack.push(arrEx[0]);
@@ -27,6 +27,7 @@ public interface BalancedStringService {
             } else if (arrEx[i].equals(")")) {
                 if (!stack.isEmpty() && stack.peek().equals("(")) {
                     stack.pop();
+
                 } else {
                     return false;
                 }
