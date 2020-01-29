@@ -1,38 +1,41 @@
-import service.BacktrackingWithReturn;
-import service.BalancedStringService;
-import service.ListCollideService;
-import service.TakeMinElementInStackService;
+import service.*;
+import service.searchQueensPositions.BacktrackingWithReturn;
 import service.stack.MyStackStructure;
 import service.tree.BinaryTree;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
 public class Test {
-    public static void main(String[] args) {
-        BacktrackingWithReturn.backtrack(4);
+    public static void main(String[] args) throws IOException {
+        BacktrackingWithReturn.backtrack(8);
+    }
 
-        //Boolean array calculation - task from CodeWars
-//        System.out.println(numSheeps());
+    private static void hashForStepik() {
+        HashStepikService.phoneBook("12 " +
+                "add 911 police " +
+                "add 76213 Mom " +
+                "add 17239 Bob " +
+                "find 76213 " +
+                "find 910 " +
+                "find 911 " +
+                "del 910 " +
+                "del 911 " +
+                "find 911 " +
+                "find 76213 " +
+                "add 76213 daddy " +
+                "find 76213");
+    }
 
-        //Reverse String - Task from Codewars
-//        System.out.println(reverseString("hello how are you"));
-
-        //you are given two lists find the first node at which they collide - 1
-//        initListCollide();
-
-        //implement a service.stack data structure (only takes int and has a max size) - 2
-//        initStackDataStructure();
-
-        //if you have a string that contains () {} [] .. check if it's balanced - 3
-//        initBalancedString();
-
-        //implement a service.stack with get_min o(1) you can use additional space - 4
-//        initElementInStack();
-
-        //given a binary search service.tree and a number a find the rank of a - 5
-//        initCheckTheRank();
+    private static void encryptDecrypt() {
+        /*
+        "This is a test!", 1 -> "hsi  etTi sats!"
+        "This is a test!", 2 -> "hsi  etTi sats!" -> "s eT ashi tist!"
+         */
+        String res1 = EncryptDecryptService.encrypt("This is a test!", 1);
+        System.out.println(EncryptDecryptService.decrypt(res1, 1));
     }
 
     private static String reverseString(String hello) {
@@ -86,6 +89,7 @@ public class Test {
     //init 3
     private static void initBalancedString() {
        String str1 = "(){}[]";
+       String str10 = "()[]}";
        String str2 = "(){}]]";
        String str3 = "((({{{[[[]]]}}})))";
        String str4 = "()(({}{{[[[]]]}}{}))()";
@@ -149,3 +153,24 @@ public class Test {
         BinaryTree.checkTheRank(tree, 6);
     }
 }
+
+//Boolean array calculation - task from CodeWars
+//        System.out.println(numSheeps());
+
+//Reverse String - Task from Codewars
+//        System.out.println(reverseString("hello how are you"));
+
+//you are given two lists find the first node at which they collide - 1
+//        initListCollide();
+
+//implement a service.stack data structure (only takes int and has a max size) - 2
+//        initStackDataStructure();
+
+//if you have a string that contains () {} [] .. check if it's balanced - 3
+//        initBalancedString();
+
+//implement a service.stack with get_min o(1) you can use additional space - 4
+//        initElementInStack();
+
+//given a binary search service.tree and a number a find the rank of a - 5
+//        initCheckTheRank();
